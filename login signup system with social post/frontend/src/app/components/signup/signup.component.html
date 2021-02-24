@@ -1,0 +1,19 @@
+<form [formGroup]="signupForm" (ngSubmit)="signup()">
+
+    <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="Ex. Tirtharaj" formControlName="name">
+    </mat-form-field>    
+
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Ex. tirtharaj@gmail.com" formControlName="email">
+    </mat-form-field>    
+
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" placeholder="********" formControlName="password">
+    </mat-form-field> 
+
+    <button color="accent" type="submit"  [disabled]="!signupForm.valid" mat-raised-button><span>Sign up</span></button>
+</form>                                             
