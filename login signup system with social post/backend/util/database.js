@@ -6,7 +6,16 @@ const pool = mysql.createPool({
   host: config.host,
   user: config.user,
   database: config.database,
-  password: config.password,
+  // password: config.password,
 });
+
+
+pool.getConnection(function(err, connection) {
+  if(err)
+  console.log("database err"+err);
+  else
+  console.log('db connected as id ' + connection.threadId);
+
+})
 
 module.exports = pool.promise();

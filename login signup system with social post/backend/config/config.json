@@ -1,6 +1,6 @@
- {
-     "host":"localhost",
-     "user":"root",
-     "database":"post",
-     "password":"password"
- }
+{
+    "host": "localhost",
+    "user": "root",
+    "database": "post",
+    "password": "password"
+}
