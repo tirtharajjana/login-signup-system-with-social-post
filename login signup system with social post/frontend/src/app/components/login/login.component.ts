@@ -23,13 +23,12 @@ export class LoginComponent implements OnInit {
   createFromGroup(): FormGroup {
     return new FormGroup({
       email: new FormControl("", [Validators.required, Validators.email]),
-      password: new FormControl("", [Validators.required, Validators.minLength(7)]),
+      password: new FormControl("", [Validators.required, Validators.minLength(7)])
     });
   };
 
   login(): void {
-    this.authService.login(this.loginForm.value.emial, this.loginForm.value.password).subscribe();
-
+    this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe();
   }
 
 }

@@ -24,7 +24,6 @@ router.post(
     ], authController.signup
 ) 
 
-router.post(
-    '/login',authController.login)
+router.post('/login',authController.login)
 
-module.exports = router;  
+module.exports = router;   
