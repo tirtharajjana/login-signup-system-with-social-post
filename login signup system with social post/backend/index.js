@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 
 const authRoutes = require('./routes/auth');
 
+const postsRoutes = require('./routes/posts');
+
+
 const errorController = require('./controllers/error')
 
 const app = express();
@@ -26,6 +29,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/auth', authRoutes);
+
+app.use('/post', postsRoutes);
 
 app.use(errorController.get404);
 
