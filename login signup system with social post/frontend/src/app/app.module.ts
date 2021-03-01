@@ -20,6 +20,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { from } from 'rxjs';
+import { CreatePostComponent } from './components/create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { from } from 'rxjs';
     LoginComponent,
     SignupComponent,
     NavigationComponent,
+    CreatePostComponent,
   ],
   imports: [
     BrowserModule,
