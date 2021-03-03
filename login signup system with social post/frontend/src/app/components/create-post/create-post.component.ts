@@ -1,6 +1,10 @@
+import { first } from 'rxjs/operators';
 import { Post } from './../../models/Post';
-import { Component, OnInit, Output, ViewChild,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+
+import { AuthService } from './../../services/auth.service';
+import { PostService } from './../../services/post.service';
 
 @Component({
   selector: 'app-create-post',
@@ -10,10 +14,12 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 export class CreatePostComponent implements OnInit {
   @ViewChild("formDirective") formDirective: NgForm;
   @Output() create: EventEmitter<any> = new EventEmitter();
+
   form: FormGroup;
 
+  isOpen = false;
 
-  constructor() { }
+  constructor(private postService: PostService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.form = this.createFromGroup();
@@ -29,7 +35,10 @@ export class CreatePostComponent implements OnInit {
 
   onSubmit(formData: Pick<Post, "title" | 'body'>): void {
     console.log(formData);
-    this.create.emit(null);
+    this.postService.createPost(formData, this.authService.userId).pipe(first()).subscribe(() => {
+      this.create.emit(null);
+
+    })
     this.form.reset();
     this.formDirective.resetForm();
   }

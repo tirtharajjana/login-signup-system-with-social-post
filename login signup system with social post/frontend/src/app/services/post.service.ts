@@ -1,9 +1,8 @@
-
 import { Injectable, Type } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, first } from 'rxjs/operators';
 
 import { ErrorHandlerService } from './error-handler.service';
 import { User } from '../models/User';
@@ -13,7 +12,7 @@ import { Post } from './../models/Post';
   providedIn: 'root'
 })
 export class PostService {
-  private url = "http://localhost:3000/posts";
+  private url = "http://localhost:3000/post";
 
   httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -41,6 +40,7 @@ export class PostService {
 
   deletePost(postId: Pick<Post, "id">): Observable<{}> {
     return this.http.delete<Post>(`${this.url}/${postId}`, this.httpOptions).pipe(
+      first(),
       catchError(this.errorHandlerService.handleError<Post>("deletePost"))
 
     )

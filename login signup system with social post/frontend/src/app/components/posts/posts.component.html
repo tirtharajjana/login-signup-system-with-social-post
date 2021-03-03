@@ -1,18 +1,16 @@
 <app-create-post (create)="createPost()"></app-create-post>
 
-<mat-card>
-    <button mat-mat-icon-button>
+<mat-card *ngFor="let post of posts$ | async">
+    <button *ngIf="" mat-icon-button>
         <mat-icon color="warn">delete</mat-icon>
     </button>
     <div class="post-title">
-        Post title
+        {{post.title}}
     </div>
     <div class="post-meta">
-        Created at 28/02/2021
+        {{post.created}}}
     </div>
     <div class="post-body">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius autem exercitationem quasi repellendus, suscipit
-        amet laborum nisi cupiditate error, corrupti perspiciatis sequi nesciunt ipsa tenetur molestias dolores minima!
-        Non, aspernatur?
+        {{post.body}}
     </div>
-</mat-card>
+</mat-card> 

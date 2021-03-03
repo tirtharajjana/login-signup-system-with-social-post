@@ -15,23 +15,26 @@ import { Post } from './../../models/Post';
 })
 export class PostsComponent implements OnInit {
   posts$: Observable<Post[]>;
-  userId: Pick<User, 'id'>;
+  userId: Pick<User, "id">;
 
 
-  constructor(private postServices: PostService, private authServices: AuthService) { }
+  constructor(private postService: PostService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.posts$=this.fetchAll();
-    this.userId=this.authServices.userId;
+    this.posts$ = this.fetchAll();
+    this.userId = this.authService.userId;
   }
 
-  fetchAll():Observable<Post[]>{
-    return this.postServices.fetchAll();
+  fetchAll(): Observable<Post[]> {
+    return this.postService.fetchAll();
   }
 
   createPost(): void {
-    console.log("printed from parent postconponent /page");
- 
+    this.posts$ = this.fetchAll();
+  }
+
+  delete(postId: Pick<Post, "id">) {
+    this.postService.deletePost(postId).subscribe(() => (this.posts$ = this.fetchAll()))
   }
 
 
