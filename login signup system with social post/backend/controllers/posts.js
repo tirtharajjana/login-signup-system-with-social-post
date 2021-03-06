@@ -3,10 +3,10 @@ const { validation, validationResult } = require('express-validator');
 const Post = require('../models/post');
 
 exports.fetchAll = async (req, res, next) => {
-    try{
-        const  [allPosts]=await Post.fetchAll();
+    try {
+        const [allPosts] = await Post.fetchAll();
         res.status(200).json(allPosts)
-    }catch (err) {
+    } catch (err) {
         if (!err.statusCode) {
             err.statusCode = 500;
         }
@@ -24,7 +24,7 @@ exports.postPost = async (req, res, next) => {
     const user = req.body.user;
 
     try {
-        const post = {
+        const post = { 
             title: title,
             body: body,
             user: user
@@ -41,10 +41,10 @@ exports.postPost = async (req, res, next) => {
 }
 
 exports.deletePost = async (req, res, next) => {
-    try{
-        const deleteResponse=await Post.delete(req.params.id);
+    try {
+        const deleteResponse = await Post.delete(req.params.id);
         res.status(200).json(deleteResponse)
-    }catch (err) {
+    } catch (err) {
         if (!err.statusCode) {
             err.statusCode = 500;
         }

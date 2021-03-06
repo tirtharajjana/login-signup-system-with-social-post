@@ -24,7 +24,7 @@ export class PostService {
     private errorHandlerService: ErrorHandlerService,
   ) { }
 
-
+ 
 
   fetchAll(): Observable<Post[]> {
     return this.http.get<Post[]>(this.url, { responseType: "json" }).pipe(

@@ -16,13 +16,13 @@ module.exports = (req, res, next) => {
         throw err;
     }
 
-    if(!decodedToken){
+    if (!decodedToken) {
         const error = new Error('Not authenticated!');
         error.statusCode = 401;
         throw error
     }
-    req.isLoggedIn=true;
-    req.userId=decodedToken.userId;
-    req.email=decodedToken.email;
+    req.isLoggedIn = true;
+    req.userId = decodedToken.userId;
+    req.email = decodedToken.email;
     next()
 }

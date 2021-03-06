@@ -10,7 +10,7 @@ import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "posts", component: PostsComponent, canActivate:[AuthGuardService] },
+  { path: "posts", component: PostsComponent, canActivate: [AuthGuardService] },
   { path: "login", component: LoginComponent },
   { path: "signup", component: SignupComponent },
   { path: "**", redirectTo: "" }
