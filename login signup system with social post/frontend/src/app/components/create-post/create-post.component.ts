@@ -37,7 +37,6 @@ export class CreatePostComponent implements OnInit {
     console.log(formData);
     this.postService.createPost(formData, this.authService.userId).pipe(first()).subscribe(() => {
       this.create.emit(null);
-
     })
     this.form.reset();
     this.formDirective.resetForm();
